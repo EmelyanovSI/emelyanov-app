@@ -1,0 +1,11 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: ghcr.io/cirruslabs/flutter:stable
+    steps:
+      - checkout
+      - run: flutter doctor -v
+      - run: flutter test
+      - run: flutter -v build apk --debug
