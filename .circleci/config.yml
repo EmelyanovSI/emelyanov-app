@@ -8,4 +8,4 @@ jobs:
       - checkout
       - run: flutter doctor -v
       - run: flutter test
-      - run: flutter -v build apk --release
+      - run: flutter -v build apk
