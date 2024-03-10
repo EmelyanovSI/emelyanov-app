@@ -48,8 +48,8 @@ jobs:
             and:
               - equal: [ master, << pipeline.git.branch >> ]
           steps:
-#            - store_artifacts:
-#                path: build/app/outputs/bundle/release/app-release.aab
+            - store_artifacts:
+                path: build/app/outputs/bundle/release/app-release.aab
             - run:
                 name: Zip symbols
                 command: cd build/app/intermediates/merged_native_libs/release/out/lib && zip -r symbols.zip .
@@ -61,9 +61,9 @@ workflows:
   build_and_deploy:
     jobs:
       - flutter_build
-#      - android_apk_build:
-#          requires:
-#            - flutter_build
+      - android_apk_build:
+          requires:
+            - flutter_build
       - android_bundle_build:
           requires:
             - flutter_build
