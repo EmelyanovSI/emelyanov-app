@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  build:
+  flutter_build:
     docker:
       - image: ghcr.io/cirruslabs/flutter:stable
     steps:
@@ -9,6 +9,11 @@ jobs:
       - run: flutter doctor -v
       - run: flutter test
 
+  android_apk_build:
+    docker:
+      - image: ghcr.io/cirruslabs/flutter:stable
+    steps:
+      - checkout
       - run:
           name: Decode Android key store
           command: echo $BASE64_KEYSTORE | base64 -d | tee keystore android/app/keystore > /dev/null
@@ -27,3 +32,29 @@ jobs:
             - store_artifacts:
                 path: build/app/outputs/flutter-apk/app-release.apk
 
+  android_bundle_build:
+    docker:
+      - image: ghcr.io/cirruslabs/flutter:stable
+    steps:
+      - checkout
+      - run: flutter -v build appbundle --release
+      - when:
+          condition:
+            and:
+              - equal: [ master, << pipeline.git.branch >> ]
+              - equal: [ /^v.*/, << pipeline.git.tag >> ]
+          steps:
+            - store_artifacts:
+                path: build/app/outputs/bundle/release/app-release.aab
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - flutter_build
+      - android_apk_build:
+          requires:
+            - flutter_build
+      - android_bundle_build:
+          requires:
+            - flutter_build
