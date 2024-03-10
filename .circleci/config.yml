@@ -8,12 +8,6 @@ jobs:
       - checkout
       - run: flutter doctor -v
       - run: flutter test
-
-  android_apk_build:
-    docker:
-      - image: ghcr.io/cirruslabs/flutter:stable
-    steps:
-      - checkout
       - run:
           name: Decode Android key store
           command: echo $BASE64_KEYSTORE | base64 -d | tee keystore android/app/keystore > /dev/null
@@ -22,8 +16,12 @@ jobs:
           command: cd android && printf 'keyAlias=%s\nkeyPassword=%s\nstoreFile=%s\nstorePassword=%s' \
             $RELEASE_KEY_ALIAS $RELEASE_KEY_PASSWORD $RELEASE_KEYSTORE $RELEASE_STORE_PASSWORD > key.properties
 
+  android_apk_build:
+    docker:
+      - image: ghcr.io/cirruslabs/flutter:stable
+    steps:
+      - checkout
       - run: flutter -v build apk --release
-
       - when:
           condition:
             and:
