@@ -63,3 +63,6 @@ workflows:
       - android_bundle_build:
           requires:
             - flutter_build
+          filters:
+            branches:
+              only: master
