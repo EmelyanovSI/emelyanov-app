@@ -8,4 +8,13 @@ jobs:
       - checkout
       - run: flutter doctor -v
       - run: flutter test
-      - run: flutter -v build apk --debug
+
+      - run:
+          name: Decode Android key store
+          command: echo $BASE64_KEYSTORE | base64 -d | tee keystore $RELEASE_KEYSTORE > /dev/null
+      - run:
+          name: Create key.properties
+          command: cd android && printf 'keyAlias=%s\nkeyPassword=%s\nstoreFile=%s\nstorePassword=%s' \
+            $RELEASE_KEY_ALIAS $RELEASE_KEY_PASSWORD $RELEASE_KEYSTORE $RELEASE_STORE_PASSWORD > key.properties
+
+      - run: flutter -v build apk --release
