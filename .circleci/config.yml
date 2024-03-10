@@ -11,7 +11,7 @@ jobs:
 
       - run:
           name: Decode Android key store
-          command: echo $BASE64_KEYSTORE | base64 -d | tee keystore $RELEASE_KEYSTORE > /dev/null
+          command: echo $BASE64_KEYSTORE | base64 -d | tee keystore android/app/keystore > /dev/null
       - run:
           name: Create key.properties
           command: cd android && printf 'keyAlias=%s\nkeyPassword=%s\nstoreFile=%s\nstorePassword=%s' \
