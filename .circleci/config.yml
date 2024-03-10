@@ -19,5 +19,11 @@ jobs:
 
       - run: flutter -v build apk --release
 
-      - store_artifacts:
-          path: build/app/outputs/flutter-apk/app-release.apk
+      - when:
+          condition:
+            and:
+              - equal: [ master, << pipeline.git.branch >> ]
+          steps:
+            - store_artifacts:
+                path: build/app/outputs/flutter-apk/app-release.apk
+
