@@ -93,7 +93,7 @@ BEGIN
             VALUE "FileDescription", "emelyanov_app" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "emelyanov_app" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2024 dev.emelyanov. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2025 dev.emelyanov. All rights reserved." "\0"
             VALUE "OriginalFilename", "emelyanov_app.exe" "\0"
             VALUE "ProductName", "emelyanov_app" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
