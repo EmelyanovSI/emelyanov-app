@@ -1,11 +1,23 @@
 name: emelyanov_app
 description: 'A new Flutter project.'
 publish_to: 'none'
+homepage: https://play.google.com/store/apps/details?id=dev.emelyanov.emelyanov_app
+repository: https://github.com/EmelyanovSI/emelyanov-app
+issue_tracker: https://github.com/EmelyanovSI/emelyanov-app/issues
+documentation: README.md
+platforms:
+  android:
+  ios:
+  linux:
+  macos:
+  web:
+  windows:
 
 version: 1.0.1+6
 
 environment:
   sdk: ^3.8.1
+  flutter: ^3.32.8
 
 dependencies:
   flutter:
