@@ -11,4 +11,4 @@ PRODUCT_NAME = emelyanov_app
 PRODUCT_BUNDLE_IDENTIFIER = dev.emelyanov.emelyanovApp
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2024 dev.emelyanov. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2025 dev.emelyanov. All rights reserved.
