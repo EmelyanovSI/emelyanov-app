@@ -52,9 +52,9 @@ jobs:
                 path: build/app/outputs/bundle/release/app-release.aab
             - run:
                 name: Zip symbols
-                command: cd build/app/intermediates/merged_native_libs/release/out/lib && zip -r symbols.zip .
+                command: cd build/app/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/lib && zip -r symbols.zip .
             - store_artifacts:
-                path: build/app/intermediates/merged_native_libs/release/out/lib/symbols.zip
+                path: build/app/intermediates/merged_native_libs/release/mergeReleaseNativeLibs/out/lib/symbols.zip
 
 workflows:
   version: 2
