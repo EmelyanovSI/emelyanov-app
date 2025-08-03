@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   flutter_build:
     docker:
-      - image: ghcr.io/cirruslabs/flutter:stable
+      - image: ghcr.io/cirruslabs/flutter:3.32.8
     steps:
       - checkout
       - run: flutter doctor -v
@@ -11,7 +11,7 @@ jobs:
 
   android_apk_build:
     docker:
-      - image: ghcr.io/cirruslabs/flutter:stable
+      - image: ghcr.io/cirruslabs/flutter:3.32.8
     steps:
       - checkout
       - run:
@@ -21,7 +21,7 @@ jobs:
           name: Create key.properties
           command: cd android && printf 'keyAlias=%s\nkeyPassword=%s\nstoreFile=%s\nstorePassword=%s' \
             $RELEASE_KEY_ALIAS $RELEASE_KEY_PASSWORD $RELEASE_KEYSTORE $RELEASE_STORE_PASSWORD > key.properties
-      - run: flutter -v build apk --release
+      - run: flutter build apk --release
       - when:
           condition:
             and:
@@ -32,7 +32,7 @@ jobs:
 
   android_bundle_build:
     docker:
-      - image: ghcr.io/cirruslabs/flutter:stable
+      - image: ghcr.io/cirruslabs/flutter:3.32.8
     steps:
       - checkout
       - run:
@@ -42,7 +42,7 @@ jobs:
           name: Create key.properties
           command: cd android && printf 'keyAlias=%s\nkeyPassword=%s\nstoreFile=%s\nstorePassword=%s' \
             $RELEASE_KEY_ALIAS $RELEASE_KEY_PASSWORD $RELEASE_KEYSTORE $RELEASE_STORE_PASSWORD > key.properties
-      - run: flutter -v build appbundle --release
+      - run: flutter build appbundle --release
       - when:
           condition:
             and:
