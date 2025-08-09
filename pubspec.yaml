@@ -13,7 +13,7 @@ platforms:
   web:
   windows:
 
-version: 1.0.2+7
+version: 1.0.4+9
 
 environment:
   sdk: ^3.8.1
