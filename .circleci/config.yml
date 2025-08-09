@@ -21,11 +21,14 @@ jobs:
           name: Create key.properties
           command: cd android && printf 'keyAlias=%s\nkeyPassword=%s\nstoreFile=%s\nstorePassword=%s' \
             $RELEASE_KEY_ALIAS $RELEASE_KEY_PASSWORD $RELEASE_KEYSTORE $RELEASE_STORE_PASSWORD > key.properties
-      - run: flutter build apk --release \
-          --obfuscate \
-          --split-per-abi \
-          --target-platform android-arm64 \
-          --split-debug-info=split_debug_info/
+      - run:
+          name: Build APK
+          command: |
+            flutter build apk --release \
+              --obfuscate \
+              --split-per-abi \
+              --target-platform android-arm64 \
+              --split-debug-info=split_debug_info/
       - when:
           condition:
             and:
@@ -46,9 +49,12 @@ jobs:
           name: Create key.properties
           command: cd android && printf 'keyAlias=%s\nkeyPassword=%s\nstoreFile=%s\nstorePassword=%s' \
             $RELEASE_KEY_ALIAS $RELEASE_KEY_PASSWORD $RELEASE_KEYSTORE $RELEASE_STORE_PASSWORD > key.properties
-      - run: flutter build appbundle --release \
-          --obfuscate \
-          --split-debug-info=split_debug_info/
+      - run:
+          name: Build Appbundle
+          command: |
+            flutter build appbundle --release \
+              --obfuscate \
+              --split-debug-info=split_debug_info/
       - when:
           condition:
             and:
