@@ -16,8 +16,8 @@ platforms:
 version: 1.0.4+9
 
 environment:
-  sdk: ^3.8.1
-  flutter: ^3.32.8
+  sdk: ^3.12.0
+  flutter: ^3.44.0
 
 dependencies:
   flutter:
