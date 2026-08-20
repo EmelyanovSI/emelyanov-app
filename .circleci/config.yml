@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   flutter_build:
     docker:
-      - image: ghcr.io/cirruslabs/flutter:3.32.8
+      - image: ghcr.io/cirruslabs/flutter:3.44.0
     steps:
       - checkout
       - run: flutter doctor -v
@@ -11,7 +11,7 @@ jobs:
 
   android_apk_build:
     docker:
-      - image: ghcr.io/cirruslabs/flutter:3.32.8
+      - image: ghcr.io/cirruslabs/flutter:3.44.0
     steps:
       - checkout
       - run:
@@ -39,7 +39,7 @@ jobs:
 
   android_bundle_build:
     docker:
-      - image: ghcr.io/cirruslabs/flutter:3.32.8
+      - image: ghcr.io/cirruslabs/flutter:3.44.0
     steps:
       - checkout
       - run:
